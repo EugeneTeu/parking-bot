@@ -88,10 +88,11 @@ function setCarpark(resp: string) : string {
       case "outside":
         return location.OUTSIDE;
       default:
+        return resp;
         break;
-    }
-  }
-  return "";
+    } 
+  } 
+  return resp;
 }
 
 
