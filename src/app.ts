@@ -1,6 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
 import { config }  from 'dotenv';
-import { match } from "assert";
 
 enum location { 
   OUTSIDE = "outside",
@@ -24,10 +23,8 @@ bot.onText(/\/merc (.+)/, (msg, match) => {
   // 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
-
   const chatId = msg.chat.id;
   if (match == null) {
-
   } else {
     const resp = match[1]; // the captured "whatever"
     MERC = setCarpark(resp);
@@ -48,18 +45,11 @@ bot.onText(/\/kodiaq (.+)/, (msg, match) => {
   // 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
-
   const chatId = msg.chat.id;
   if (match == null) {
-    
   } else {
-
-  
     const resp = match[1]; // the captured "whatever"
     KODIAQ = setCarpark(resp);
-
-
-
     // send back the matched "whatever" to the chat
     bot.sendMessage(chatId, "kodiaq parked at: " + KODIAQ);
   }
@@ -72,8 +62,6 @@ bot.onText(/\/reset/, (msg, match) => {
   MERC = location.DUNNO_MERCS + "";
   bot.sendMessage(chatId, "Locations resetted!")
 });
-
-
 
 function setCarpark(resp: string) : string {
    if (resp.match(/^[1-9]\d*$/)) {
